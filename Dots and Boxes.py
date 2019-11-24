@@ -1374,8 +1374,6 @@ class DotsAndBoxes():
 #Funtion represents the AI, creates a random move.
 #First updates and checks if the game ended before randomizing a move.
     def AI(self):
-        print('AI')
-        self.update()#######swap?
         self.gameOver()
         if (self.playerOneScore + self.playerTwoScore == 25):
             pygame.QUIT()
@@ -1425,7 +1423,8 @@ class DotsAndBoxes():
             #If line is already placed, calls AI.
             else:
                 self.AI()
-
+        self.update()#######swap?
+        self.gameOver()
 
         #If the random choice was vertical...
         #Perform the same actions as for horizontal (check boxes).
@@ -1464,10 +1463,11 @@ class DotsAndBoxes():
             else:
                 self.AI()
 
+        self.update()
+        self.gameOver()
 
 #Function checks if the game is over, by checking if the score is 25
 #As there are 25 possible boxes.
-
     def gameOver(self):
         #If all 25 boxes are owned, end the game.
         #Display a tkinter pop up of winner
@@ -1475,6 +1475,7 @@ class DotsAndBoxes():
         if (self.playerOneScore + self.playerTwoScore == 25):
             if self.playerOneScore > self.playerTwoScore:
                 messagebox.showinfo("GAME OVER", str(self.player1) + " won!")
+                self.update()
                 pygame.display.quit()
                 pygame.quit()
                 wnd.deiconify()
@@ -1482,6 +1483,7 @@ class DotsAndBoxes():
 
             if self.playerOneScore < self.playerTwoScore:
                 messagebox.showinfo("GAME OVER", str(self.player2) + " won!")
+                self.update()
                 pygame.display.quit()
                 pygame.quit()
                 wnd.deiconify()
