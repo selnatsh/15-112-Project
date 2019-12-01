@@ -1,11 +1,10 @@
 ###############################################################################
 ############  15-112 Programming Project: Dots and Boxes  #####################
-###############################################################################
 ############       Shahrazad El Natsheh - selnatsh        #####################
 ###############################################################################
 
-#################         Importing libraries        ##########################
 
+#################         Importing libraries        ##########################
 from tkinter import *
 from tkinter import messagebox
 import random
@@ -16,8 +15,6 @@ import sys
 sys.setrecursionlimit(10000)
 
 ##################          Game start page         ###########################
-
-
 #Classes circle and drawSquare are used to create an animated background.
 #Shapes are made with random colors and will move around the frame by changing
 # its position with every call. 
@@ -35,9 +32,10 @@ class circle():
         
     #Function draws the 10px shapes.
     def draw(self,c):
-        c.create_oval(self.x, self.y, self.x+10, self.y+10,fill=self.color,
+        c.create_oval(self.x, self.y, self.x+10, self.y+10,
+                      fill=self.color,
                       outline=self.color)
-    #Function will move the shape 5 pixels in any direction within the frame.
+    #Function will move the shape 5 pixels in any direction within frame.
     def move(self,mx,my):
         self.x += self.dx
         self.y += self.dy
@@ -78,7 +76,7 @@ class mainwnd():
 
         #Canvas will contain the moving shapes.
         self.canv = Canvas(self.mainFrame,width = 600, height = 600)
-        self.drawShapes() #Function will draw create the animated background.
+        self.drawShapes() #Function will create the animated background.
         self.canv.pack()
 
         #Placing the title image onto frame. Font from:
@@ -120,7 +118,7 @@ class mainwnd():
 
     #Depending on the choice made, it will call the window for instructions
     #on how to play (Instructions are written on an image)
-    #Once clicked on ok, window to take in user input appears(color and username).
+    #Once clicked on ok, window to take in user input appears(color & username).
     def playOffline(self):
         self.instruct = Toplevel()
         self.instruct.geometry("400x530")
@@ -334,7 +332,7 @@ def loginVerify (s, username, password):
 def sendFriendRequest(s, friend):
     friend = '@' + friend
     size = len('@00000@request@friend\n') + len(friend) #Finds the size.
-    size = '@' + str("%05d" % (size))   #Makes size a 5 digit value, converts format.
+    size = '@' + str("%05d" % (size)) #Makes size a 5 digit value, converts format.
     #Friend Request is sent in correct command format. 
     s.send(bytes((size),'utf-8') + b"@request@friend"
            + bytes(str(friend),'utf-8') + b"\n")
@@ -446,7 +444,8 @@ class loginServer:
 
         self.userPass = Label(self.mainFrame,
                               text="Password",
-                              font = "Rockwell 11 bold ",fg = 'dodger blue').pack()
+                              font = "Rockwell 11 bold ",
+                              fg = 'dodger blue').pack()
 
         #Takes a password input and displays as *.
         self.password = Entry(self.mainFrame,
@@ -501,10 +500,12 @@ class gameServer:
         #Adding widgets  of main screen using grid display.
         #Labels
         self.usersLbl = Label(self.mainFrame,text ='All Users',
-                              fg = "dodger blue", font = "Rockwell 11 underline")
+                              fg = "dodger blue", 
+                              font = "Rockwell 11 underline")
         self.usersLbl.grid(row=0,column=0)
         self.friendsLbl = Label(self.mainFrame,text ='Your Friends',
-                                fg = "lime green", font = "Rockwell 11 underline")
+                                fg = "lime green", 
+                                font = "Rockwell 11 underline")
         self.friendsLbl.grid(row=0,column=1)
         self.reqLbl = Label(self.mainFrame,text ='Pending Requests',
                             fg = "salmon", font = "Rockwell 11 underline")
@@ -670,7 +671,7 @@ class gameServer:
         #If the messages are not empty, actions are made depending on the message...
         if Messages != ['', '0']:
             for (u, m) in Messages:
-                #If a request is recieved, a pop up appears to ask if they'd like to play.
+            #If a request is recieved, a pop up appears to ask if they'd like to play.
                 if m == 'Game Request':
                     MsgBox = messagebox.askquestion('Game Request',
                                                     str(u) + ' would like to play!')
@@ -854,28 +855,38 @@ class userChoices2:
         self.playerName2.pack()
 
         self.chooseColor = Label(self.mainFrame,
-                                 text = 'Choose your color to start', font = 'Rockwell 18',
+                                 text = 'Choose your color to start', 
+                                 font = 'Rockwell 18',
                                  fg='slate gray', pady = 20)
-        self.redChoice = Button(self.mainFrame, width = 2,height = 1,bg = 'red',pady = 5,
+        self.redChoice = Button(self.mainFrame, width = 2,height = 1,
+                                bg = 'red',pady = 5,
                                 command = lambda :
-                                self.playerInput(self.playerName1,str(self.playerName2.get()),
+                                self.playerInput(self.playerName1,
+                                                 str(self.playerName2.get()),
                                                  self.color1,'red'))
         self.blueChoice = Button(self.mainFrame, width = 2,height = 1,
                                  bg = 'light blue',pady = 5,
                                  command = lambda :
-                                 self.playerInput(self.playerName1,str(self.playerName2.get()),
+                                 self.playerInput(self.playerName1,
+                                                  str(self.playerName2.get()),
                                                   self.color1,'blue'))
-        self.purpleChoice = Button(self.mainFrame, width = 2,height = 1,bg = 'orchid',pady = 5,
+        self.purpleChoice = Button(self.mainFrame, width = 2,height = 1,
+                                   bg = 'orchid',pady = 5,
                                    command = lambda :
-                                   self.playerInput(self.playerName1,str(self.playerName2.get()),
+                                   self.playerInput(self.playerName1,
+                                                    str(self.playerName2.get()),
                                                     self.color1,'purple'))
-        self.greenChoice = Button(self.mainFrame, width = 2,height = 1,bg = 'light green',pady = 5,
+        self.greenChoice = Button(self.mainFrame, width = 2,height = 1,
+                                  bg = 'light green',pady = 5,
                                   command = lambda :
-                                  self.playerInput(self.playerName1,str(self.playerName2.get()),
+                                  self.playerInput(self.playerName1,
+                                                   str(self.playerName2.get()),
                                                    self.color1,'green'))
-        self.yellowChoice = Button(self.mainFrame, width = 2,height = 1,bg = 'lemon chiffon',pady = 5,
+        self.yellowChoice = Button(self.mainFrame, width = 2,height = 1,
+                                   bg = 'lemon chiffon',pady = 5,
                                    command = lambda :
-                                   self.playerInput(self.playerName1,str(self.playerName2.get()),
+                                   self.playerInput(self.playerName1,
+                                                    str(self.playerName2.get()),
                                                     self.color1,'yellow'))
 
         #Placing the window widgets onto the screen.
