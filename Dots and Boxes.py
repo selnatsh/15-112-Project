@@ -93,7 +93,7 @@ class mainwnd():
                                     width = 12, height = 5,
                                     fg = "white",
                                     bg = "light coral",
-                                    font = "Rockwell 12 bold",
+                                    font = "Rockwell 11 bold",
                                     command = self.playOffline)
         self.choiceAI = Button(self.mainFrame,
                                text="Play against AI",
