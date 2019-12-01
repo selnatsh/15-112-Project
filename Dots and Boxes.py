@@ -1782,6 +1782,7 @@ class DotsAndBoxes():
 
 ###################################     Graphical User Interface    ##############################################
 #Function loads the images for graphics as variables. 
+#Images are made using paint.
     def gameImages(self):
         #Loads the line vertically and horizontally.
         self.lineV=pygame.image.load("normalline.png")
