@@ -1014,7 +1014,6 @@ class DotsAndBoxes():
         #Game runs as long as the game is not over and the user has not quit.
         while self.gameOver() != False:
             self.update()
-            print('game running')
         pygame.quit()
 
         #ONce the game is over, show a pop up of who the winner is based on bigger score.
