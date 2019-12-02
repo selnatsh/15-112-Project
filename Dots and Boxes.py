@@ -1889,10 +1889,10 @@ class DotsAndBoxes():
         if (self.playerOneScore + self.playerTwoScore == 25):
             #If the game is online, and it is the last turn, the player will send
             #the final board in order to update to a game over for the other user as well.
-            if self.isOnline != 'NA' and self.turn == True:
-                    self.overMsg = str(self.boardH)+';'+str(self.boardV)+';'+str(self.owner)
-                    sendMessage(self.s,self.player2,self.overMsg)
-                    self.recvBoard()
+            if self.isOnline != 'NA':
+                self.overMsg = str(self.boardH)+';'+str(self.boardV)+';'+str(self.owner)
+                sendMessage(self.s,self.player2,self.overMsg)
+                self.recvBoard()
             return False #Returns false if the game is over.
         return True #True if the game isnt over.
 
